@@ -15,6 +15,8 @@ namespace TestSnappyNuget
         {
             try
             {
+                var folder = Path.Combine(Path.GetTempPath(), "Snappy.NET-" + "XXX");
+                Console.WriteLine($"Temp folder: {folder}");
                 var file = File.OpenWrite("mydata.sz");
                 var compressor = new SnappyStream(file, CompressionMode.Compress);
                 var writer = new StreamWriter(compressor);

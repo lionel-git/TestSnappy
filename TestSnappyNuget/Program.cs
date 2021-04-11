@@ -13,10 +13,20 @@ namespace TestSnappyNuget
     {
         static void Main(string[] args)
         {
-            var file = File.OpenWrite("mydata.sz");
-            var compressor = new SnappyStream(file, CompressionMode.Compress);
-            var writer = new StreamWriter(compressor);
-            writer.WriteLine("Hello World!");
+            try
+            {
+                var file = File.OpenWrite("mydata.sz");
+                var compressor = new SnappyStream(file, CompressionMode.Compress);
+                var writer = new StreamWriter(compressor);
+                writer.WriteLine("Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!Hello World!");
+                writer.Close();
+                var data= File.ReadAllBytes("mydata.sz");
+                Console.WriteLine($"Length: {data.Length}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }
